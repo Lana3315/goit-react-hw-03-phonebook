@@ -33,12 +33,13 @@ export class App extends Component {
       id: nanoid(),
       ...data,
     };
-
-    contacts.some(({ name }) => name === data.name)
+    
+    contacts.some(({ name }) => name.toLowerCase() === data.name.toLowerCase())
       ? alert(`${data.name} is already in contacts`)
       : this.setState(prevState => ({
-          contacts: [...prevState.contacts, newContact],
-        }));
+        contacts: [...prevState.contacts, newContact],
+       
+      }));
   };
 
   deleteContact = userId => {
